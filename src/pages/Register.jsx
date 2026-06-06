@@ -3,6 +3,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
+import BASE_URL from "../config/api";
+
 const Register = ({ darkMode }) => {
 
   const [form, setForm] = useState({
@@ -92,10 +94,8 @@ const Register = ({ darkMode }) => {
 
       // AXIOS API REQUEST
 
-      const response =
-        await axios.post(
+      const response = await axios.post(`${BASE_URL}/register`, 
 
-          "http://localhost:5000/register",
 
           {
             name: form.name,

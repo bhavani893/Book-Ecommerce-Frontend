@@ -2,6 +2,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
+import BASE_URL from "../config/api";
+
 const Contact = ({ darkMode }) => {
   const [form, setForm] = useState({
     name: "",
@@ -26,7 +28,7 @@ const Contact = ({ darkMode }) => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch(`${BASE_URL}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)

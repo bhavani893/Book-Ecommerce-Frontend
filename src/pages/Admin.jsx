@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import BASE_URL from "../config/api";
+
 function Admin({ darkMode }) {
 
 const [books, setBooks] = useState([]);
@@ -37,7 +39,7 @@ fetchEvents();
 
 const fetchBooks = async () => {
 try {
-const res = await axios.get("http://localhost:5000/api/books");
+const res = await axios.get(`${BASE_URL}/api/books`);
 setBooks(res.data.books);
 } catch (err) {
 console.log(err);
@@ -46,7 +48,7 @@ console.log(err);
 
 const fetchEvents = async () => {
 try {
-const res = await axios.get("http://localhost:5000/api/events");
+const res = await axios.get(`${BASE_URL}/api/events`);
 setEvents(res.data.events);
 } catch (err) {
 console.log(err);
@@ -58,17 +60,11 @@ console.log(err);
 const handleBook = async () => {
 try {
 if (editingId) {
-await axios.put(
-`http://localhost:5000/api/books/update/${editingId}`,
-bookData
-);
+await axios.put(`${BASE_URL}/api/books/update/${editingId}`, bookData);
 toast.success("Book updated ✏️");
 setEditingId(null);
 } else {
-await axios.post(
-"http://localhost:5000/api/books/add",
-bookData
-);
+await axios.post(`${BASE_URL}/api/books/add`, bookData);
 toast.success("Book added 📚");
 }
 
@@ -85,7 +81,7 @@ toast.error("Error");
 
 const deleteBook = async (id) => {
 try {
-await axios.delete(`http://localhost:5000/api/books/delete/${id}`);
+await axios.put(`${BASE_URL}/api/books/update/${editingId}`, bookData);
 toast.success("Book deleted ❌");
 fetchBooks();
 } catch {
@@ -104,17 +100,11 @@ const handleEvent = async () => {
 try {
 
 if (editingEventId) {
-await axios.put(
-`http://localhost:5000/api/events/update/${editingEventId}`,
-eventData
-);
+await axios.put(`${BASE_URL}/api/events/update/${editingEventId}`, eventData);
 toast.success("Event updated ✏️");
 setEditingEventId(null);
 } else {
-await axios.post(
-"http://localhost:5000/api/events/add",
-eventData
-);
+await axios.post(`${BASE_URL}/api/events/add`, eventData);
 toast.success("Event added 🎉");
 }
 
@@ -131,7 +121,7 @@ toast.error("Event error");
 
 const deleteEvent = async (id) => {
 try {
-await axios.delete(`http://localhost:5000/api/events/delete/${id}`);
+await axios.delete(`${BASE_URL}/api/events/delete/${id}`);
 toast.success("Event deleted ❌");
 fetchEvents();
 } catch {

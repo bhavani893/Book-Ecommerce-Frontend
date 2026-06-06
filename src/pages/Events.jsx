@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import BASE_URL from "../config/api";
+
 function Events({ darkMode }) {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ function Events({ darkMode }) {
   const fetchEvents = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/events"
+        `${BASE_URL}/api/events`
       );
 
       setEvents(
@@ -60,7 +62,7 @@ function Events({ darkMode }) {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/register-event",
+        `${BASE_URL}/register-event`,
         {
           method: "POST",
           headers: {

@@ -6,6 +6,8 @@ import {
   useEffect
 } from "react";
 
+import BASE_URL from "../config/api";
+
 const BookDetails = ({
   setCart,
   darkMode
@@ -32,9 +34,7 @@ const BookDetails = ({
 
       try {
 
-        const res = await axios.get(
-          `http://localhost:5000/api/books/${id}`
-        );
+        const res = await axios.get(`${BASE_URL}/api/books/${id}`);
 
         setBook(res.data.book);
 

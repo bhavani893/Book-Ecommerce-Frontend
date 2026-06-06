@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import BASE_URL from "../config/api";
+
 const Catalog = ({
   darkMode,
   cart = [],
@@ -24,7 +26,7 @@ const Catalog = ({
       try {
 
         const res = await axios.get(
-          "http://localhost:5000/api/books"
+          `${BASE_URL}/api/books`
         );
 
         setBooks(res.data.books);

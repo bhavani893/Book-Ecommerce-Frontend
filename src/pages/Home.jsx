@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BookCard from "../components/BookCard";
 import axios from "axios";
+import BASE_URL from "../config/api";
 
 function Home({
   wishlist,
@@ -35,7 +36,7 @@ function Home({
       try {
 
         const res = await axios.get(
-          "http://localhost:5000/api/books"
+          `${BASE_URL}/api/books`
         );
 
         setBooks(res.data.books);

@@ -7,6 +7,8 @@ import {
 
 import axios from "axios";
 
+import BASE_URL from "../config/api";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -37,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
         const res = await axios.get(
 
-          "http://localhost:5000/api/user/me",
+          `${BASE_URL}/api/user/me`,
 
           {
             headers: {

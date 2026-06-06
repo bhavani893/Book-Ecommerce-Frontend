@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "../config/api";
 
 function Authors({ darkMode }) {
   const [books, setBooks] = useState([]);
@@ -11,9 +12,7 @@ function Authors({ darkMode }) {
   // FETCH BOOKS
   const fetchBooks = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/books"
-      );
+      const res = await axios.get(`${BASE_URL}/api/books`);
 
       setBooks(res.data.books || []);
     } catch (error) {

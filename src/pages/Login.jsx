@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+import BASE_URL from "../config/api";
+
 const Login = ({ darkMode }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +21,7 @@ const Login = ({ darkMode }) => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/login", form);
+      const res = await axios.post(`${BASE_URL}/login`, form);
       login(res.data.token, res.data.user);
       toast.success("Welcome back! 🚀");
       navigate("/dashboard");
