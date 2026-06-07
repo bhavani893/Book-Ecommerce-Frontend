@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://bookecommercebackend-k112.onrender.com"; // ✅ updated
+const BASE_URL = "https://book-ecommerce-backend-ojha.onrender.com/"; // ✅ updated
 
 const api = axios.create({
   baseURL: BASE_URL

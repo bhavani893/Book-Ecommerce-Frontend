@@ -1,2 +1,2 @@
-const BASE_URL = "https://bookecommercebackend-k112.onrender.com";
+const BASE_URL = "https://book-ecommerce-backend-ojha.onrender.com/";
 export default BASE_URL;
